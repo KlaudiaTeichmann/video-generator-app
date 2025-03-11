@@ -1,0 +1,55 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Zmienne do przechowywania wczytanych plików
+    let excelFile = null;
+    let videoFiles = [];
+    
+    // Nasłuchiwanie na wczytanie pliku Excel
+    document.getElementById('excel-upload').addEventListener('change', function(e) {
+        excelFile = e.target.files[0];
+        if (excelFile) {
+            alert('Wczytano plik Excel: ' + excelFile.name);
+        }
+    });
+    
+    // Nasłuchiwanie na wczytanie plików wideo
+    document.getElementById('video-upload').addEventListener('change', function(e) {
+        videoFiles = Array.from(e.target.files);
+        if (videoFiles.length > 0) {
+            alert('Wczytano ' + videoFiles.length + ' plików wideo');
+        }
+    });
+    
+    // Nasłuchiwanie na kliknięcie przycisku generowania
+    document.getElementById('generate-btn').addEventListener('click', function() {
+        if (!excelFile) {
+            alert('Proszę wczytać plik Excel');
+            return;
+        }
+        
+        if (videoFiles.length === 0) {
+            alert('Proszę wczytać pliki wideo');
+            return;
+        }
+        
+        alert('W prawdziwej aplikacji, tutaj rozpoczęłoby się generowanie filmów. To jest tylko prototyp interfejsu.');
+        
+        // Symulacja wygenerowanych filmów
+        const resultsContainer = document.getElementById('generated-videos');
+        resultsContainer.innerHTML = '';
+        
+        for (let i = 0; i < 6; i++) {
+            const videoEl = document.createElement('div');
+            videoEl.className = 'video-item';
+            videoEl.innerHTML = `
+                <div style="background-color: #333; height: 180px; display: flex; align-items: center; justify-content: center; color: white;">
+                    Film ${i+1}
+                </div>
+                <div style="padding: 0.5rem;">
+                    <p>Długość: 6s</p>
+                    <p>Status: Gotowy</p>
+                </div>
+            `;
+            resultsContainer.appendChild(videoEl);
+        }
+    });
+});

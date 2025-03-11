@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Rolek Wideo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Generator Rolek Wideo</h1>
+            <p>Twórz automatycznie krótkie rolki z tekstem z Excela</p>
+        </header>
+        
+        <main>
+            <div class="container">
+                <div class="upload-section">
+                    <h2>Wczytaj pliki</h2>
+                    
+                    <div class="upload-box">
+                        <h3>Plik Excel z tekstami</h3>
+                        <input type="file" id="excel-upload" accept=".xlsx,.xls,.csv">
+                        <label for="excel-upload">Wybierz plik Excel</label>
+                    </div>
+                    
+                    <div class="upload-box">
+                        <h3>Pliki wideo</h3>
+                        <input type="file" id="video-upload" accept="video/*" multiple>
+                        <label for="video-upload">Wybierz filmy</label>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h2>Ustawienia</h2>
+                    <div class="setting">
+                        <label>Długość klipu (w sekundach)</label>
+                        <input type="number" id="clip-duration" value="6" min="1" max="60">
+                    </div>
+                    <div class="setting">
+                        <label>Pozycja tekstu</label>
+                        <select id="text-position">
+                            <option value="top">Góra</option>
+                            <option value="middle">Środek</option>
+                            <option value="bottom" selected>Dół</option>
+                        </select>
+                    </div>
+                    <button id="generate-btn">Generuj filmy</button>
+                </div>
+                
+                <div class="results-section">
+                    <h2>Wygenerowane filmy</h2>
+                    <div id="generated-videos"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
